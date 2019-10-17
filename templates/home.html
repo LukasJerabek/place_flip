@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action=""> <!--empty action means POST to current route-->
+            <!--adding csrf token(protection, necessary, part of secret key-->
+            {{ form.hidden_tag() }}
+            <fieldset class = 'form-group'> <!--bootstrap classes-->
+                <legend class = "border-bottom mb-4">Options</legend>
+                <div class = "form-group">
+                    {{ form.place.label(class="form-control-label") }}
+                    {% if form.place.errors %}
+                        {{ form.place(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.place.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.place(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class = "form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}
