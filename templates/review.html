@@ -2,17 +2,22 @@
 {% block content %}
     {% for place in places %}
         <article class="media content-section">
-          <div class="media-body">
-            <h2 class="article-title">{{ place.where }}</h2>
+          <div class="media-body mt-2">
+            <span class="text-uppercase font-weight-bold">{{ place.where }}</span>
+            {% if place.done %}
+              <a href="{{ url_for('status_change', place_id=place.id) }}" class="badge badge-success">Accomplished!</a>
+            {% else %}
+              <a href="{{ url_for('status_change', place_id=place.id) }}" class="badge badge-secondary">Not yet</a>
+            {% endif %}
           </div>
           <div> <!--m = margin, mt = margintop, mb = marginbottom-->
             <!--button instead of link to use bootstrap modal. exampleModal -> deleteModal. Data-toggle and data-target comes from bootstrap-->
-            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal{{ place.id }}">Delete</button>
           </div>
         </article>
 
         <!-- Actual bootstrap Modal. exampleModal -> deleteModal 3x -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal{{ place.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">

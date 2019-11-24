@@ -1,4 +1,4 @@
-#!D:\Documents\Dropbox\PycharmProjects\place_flip\venv\Scripts\python.exe
+#!"D:\Documents\Disk Google\PycharmProjects\place_flip\venv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3.7'
 __requires__ = 'pip==19.0.3'
 import re
