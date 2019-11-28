@@ -1,7 +1,7 @@
-*.iml
 /venv
 /.idea
 /__pycache__
 /.last_tmp.py
 /.gitattributes
+/.gitignore
 
